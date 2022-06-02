@@ -4,7 +4,8 @@
 
 Super Formlua REST API V1 allows creation of new policies, addition of policies to existing members, retrieval of a specific policy based on policy id and member's driver license number.
 
-> ###### Swagger Definition URL: /swagger/index.html
+> ###### API Base Url: https://superformularestapi20220601225621.azurewebsites.net/
+> ###### Swagger Definition URL: https://superformularestapi20220601225621.azurewebsites.net/swagger/index.html
 
 ```plaintext
 Create a Policy endpoint: api/policy/create (Request type: POST)
@@ -228,4 +229,10 @@ Example response:
 * I would suggest deploying the app to cloud services such as Azure. 
 * Setup monitoring and logging of the app using application insights would provide data regarding the overall health and performace of the app. I would also suggest using alerts in azure monitor for customized alerts based on the app's perfromance.
 * The app stores data in a SQL Server database and it is essential to securely store PII data into the database. I would suggest using column level encryption to store PII data.
-* The app is built using .net core framework which provides highly extensible options while keeping the project maintainable. I would suggest separating all of the business logics, logging and other services as separate functional units that can be registered as independent services on the app.  
+* The app is built using .net core framework which provides highly extensible options while keeping the project maintainable. I would suggest separating all of the business logics, logging and other services as separate functional units that can be registered as independent services and consumed by app.  
+
+**Please describe how this code could be deployed and run in AWS or another cloud service provider. Which AWS services would be used? What infrastructure choices would you make? How would the code need to (if at all) change for this migration to the cloud?
+* This app can be deployed to Azure App Service that can communicate with SQL Server database to perform CRUD operations. 
+* I would choose an Azure App Service that allows auto scaling, multiple statging slots, traffic management and daily backups. The app service communicates with SQL Server database, so SQL database and SQL Server are the additional two resources required for the app. Additional publishing the app to Azure 
+advantages such as centralized location for APIs, secure access to APIs, reporting on usage analytics, real time tracking etc.    
+* For the current scenario of the app only the connection string needs to be updated to deploy it to Azure. The app should be able to communicate with the messaging services, since there is no integration that piece needs to be added to the code.

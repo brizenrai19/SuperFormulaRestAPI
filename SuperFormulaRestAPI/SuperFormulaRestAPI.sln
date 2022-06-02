@@ -5,7 +5,12 @@ VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFormulaRestAPI", "SuperFormulaRestAPI.csproj", "{DE580236-8B98-4EE6-977C-0480C86B5982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperFormulaRestAPI.Tests", "..\SuperFormulaRestAPI.Tests\SuperFormulaRestAPI.Tests.csproj", "{929AB0BC-4B6C-47C8-BE81-3869C6C31E1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFormulaRestAPI.Tests", "..\SuperFormulaRestAPI.Tests\SuperFormulaRestAPI.Tests.csproj", "{929AB0BC-4B6C-47C8-BE81-3869C6C31E1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F6DAF73A-1B8F-4076-9C47-92D209423361}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

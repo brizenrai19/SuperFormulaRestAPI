@@ -60,7 +60,7 @@ namespace SuperFormulaRestAPI.Migrations
                         new
                         {
                             MemberId = new Guid("823546f0-0e44-472a-b307-419ef2ae6968"),
-                            Address = "300 S Rankin St, Richmond, VA, 23224",
+                            Address = "600 W Blazor St, Hanover, VA, 23225",
                             DriverLicenseNumber = "DL1000002",
                             FirstName = "Peter",
                             LastName = "Parker"
@@ -68,7 +68,7 @@ namespace SuperFormulaRestAPI.Migrations
                         new
                         {
                             MemberId = new Guid("c2576ee3-f0cb-45a4-815f-8199af25bd72"),
-                            Address = "300 S Rankin St, Richmond, VA, 23224",
+                            Address = "400 E 35th St, New York, NY, 11232",
                             DriverLicenseNumber = "DL1000003",
                             FirstName = "Tony",
                             LastName = "Stark"
@@ -121,9 +121,9 @@ namespace SuperFormulaRestAPI.Migrations
                         new
                         {
                             PolicyId = new Guid("45e1658f-7530-4afb-a10d-62862ed124df"),
-                            CreateDate = new DateTime(2022, 5, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4771),
-                            EffectiveDate = new DateTime(2022, 6, 24, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4801),
-                            ExpirationDate = new DateTime(2022, 11, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4803),
+                            CreateDate = new DateTime(2022, 6, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(780),
+                            EffectiveDate = new DateTime(2022, 7, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(809),
+                            ExpirationDate = new DateTime(2022, 12, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(810),
                             MemberId = new Guid("f315c0c2-f500-4c4b-bac0-f8a333f1257f"),
                             Premium = 80.950000000000003,
                             VehicleManufacturer = "Toyota",
@@ -133,10 +133,10 @@ namespace SuperFormulaRestAPI.Migrations
                         },
                         new
                         {
-                            PolicyId = new Guid("97471354-5d3c-4666-98f4-448e238d606f"),
-                            CreateDate = new DateTime(2022, 5, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4807),
-                            EffectiveDate = new DateTime(2022, 6, 24, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4809),
-                            ExpirationDate = new DateTime(2022, 11, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4810),
+                            PolicyId = new Guid("0f045c1a-244d-4666-86e9-5b1ba088a771"),
+                            CreateDate = new DateTime(2022, 6, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(815),
+                            EffectiveDate = new DateTime(2022, 7, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(817),
+                            ExpirationDate = new DateTime(2022, 12, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(818),
                             MemberId = new Guid("823546f0-0e44-472a-b307-419ef2ae6968"),
                             Premium = 80.950000000000003,
                             VehicleManufacturer = "Honda",
@@ -146,10 +146,10 @@ namespace SuperFormulaRestAPI.Migrations
                         },
                         new
                         {
-                            PolicyId = new Guid("0f045c1a-244d-4666-86e9-5b1ba088a771"),
-                            CreateDate = new DateTime(2022, 5, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4813),
-                            EffectiveDate = new DateTime(2022, 6, 24, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4814),
-                            ExpirationDate = new DateTime(2022, 11, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4816),
+                            PolicyId = new Guid("97471354-5d3c-4666-98f4-448e238d606f"),
+                            CreateDate = new DateTime(2022, 6, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(822),
+                            EffectiveDate = new DateTime(2022, 7, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(824),
+                            ExpirationDate = new DateTime(2022, 12, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(825),
                             MemberId = new Guid("823546f0-0e44-472a-b307-419ef2ae6968"),
                             Premium = 80.950000000000003,
                             VehicleManufacturer = "Ford",
@@ -159,10 +159,10 @@ namespace SuperFormulaRestAPI.Migrations
                         },
                         new
                         {
-                            PolicyId = new Guid("54215567-7c33-4537-a665-9e28456dc728"),
-                            CreateDate = new DateTime(2022, 5, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4819),
-                            EffectiveDate = new DateTime(2022, 6, 24, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4820),
-                            ExpirationDate = new DateTime(2022, 11, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4821),
+                            PolicyId = new Guid("a533d47b-41dc-43d6-9834-ec0c2e3c39d7"),
+                            CreateDate = new DateTime(2022, 6, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(828),
+                            EffectiveDate = new DateTime(2022, 7, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(829),
+                            ExpirationDate = new DateTime(2022, 12, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(831),
                             MemberId = new Guid("c2576ee3-f0cb-45a4-815f-8199af25bd72"),
                             Premium = 80.950000000000003,
                             VehicleManufacturer = "Toyota",
@@ -172,10 +172,10 @@ namespace SuperFormulaRestAPI.Migrations
                         },
                         new
                         {
-                            PolicyId = new Guid("a533d47b-41dc-43d6-9834-ec0c2e3c39d7"),
-                            CreateDate = new DateTime(2022, 5, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4838),
-                            EffectiveDate = new DateTime(2022, 6, 24, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4839),
-                            ExpirationDate = new DateTime(2022, 11, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4841),
+                            PolicyId = new Guid("850e38fc-404c-4767-bb08-acdef824e3c8"),
+                            CreateDate = new DateTime(2022, 6, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(833),
+                            EffectiveDate = new DateTime(2022, 7, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(835),
+                            ExpirationDate = new DateTime(2022, 12, 1, 23, 44, 36, 558, DateTimeKind.Local).AddTicks(836),
                             MemberId = new Guid("c2576ee3-f0cb-45a4-815f-8199af25bd72"),
                             Premium = 80.950000000000003,
                             VehicleManufacturer = "Ford",
@@ -185,10 +185,10 @@ namespace SuperFormulaRestAPI.Migrations
                         },
                         new
                         {
-                            PolicyId = new Guid("850e38fc-404c-4767-bb08-acdef824e3c8"),
-                            CreateDate = new DateTime(2022, 5, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4844),
-                            EffectiveDate = new DateTime(2022, 6, 24, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4845),
-                            ExpirationDate = new DateTime(2022, 11, 25, 20, 54, 45, 977, DateTimeKind.Local).AddTicks(4846),
+                            PolicyId = new Guid("54215567-7c33-4537-a665-9e28456dc728"),
+                            CreateDate = new DateTime(2022, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EffectiveDate = new DateTime(2022, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpirationDate = new DateTime(2022, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MemberId = new Guid("c2576ee3-f0cb-45a4-815f-8199af25bd72"),
                             Premium = 80.950000000000003,
                             VehicleManufacturer = "Chevy",

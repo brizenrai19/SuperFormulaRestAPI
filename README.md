@@ -231,7 +231,7 @@ Example response:
 * The app stores data in a SQL Server database and it is essential to securely store PII data into the database. I would suggest using column level encryption to store PII data.
 * The app is built using .net core framework which provides highly extensible options while keeping the project maintainable. I would suggest separating all of the business logics, logging and other services as separate functional units that can be registered as independent services and consumed by app.  
 
-**Please describe how this code could be deployed and run in AWS or another cloud service provider. Which AWS services would be used? What infrastructure choices would you make? How would the code need to (if at all) change for this migration to the cloud?
+**Please describe how this code could be deployed and run in AWS or another cloud service provider. Which AWS services would be used? What infrastructure choices would you make? How would the code need to (if at all) change for this migration to the cloud?**
 * This app can be deployed to Azure App Service that can communicate with SQL Server database to perform CRUD operations. 
 * I would choose an Azure App Service that allows auto scaling, multiple statging slots, traffic management and daily backups. The app service communicates with SQL Server database, so SQL database and SQL Server are the additional two resources required for the app. Additional publishing the app to Azure 
 advantages such as centralized location for APIs, secure access to APIs, reporting on usage analytics, real time tracking etc.    

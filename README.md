@@ -4,7 +4,7 @@
 
 Super Formlua REST API V1 allows creation of new policies, addition of policies to existing members, retrieval of a specific policy based on policy id and member's driver license number.
 
-> ###### API Base Url: https://superformularestapi20220601225621.azurewebsites.net/
+> ###### API Base URL: https://superformularestapi20220601225621.azurewebsites.net/
 > ###### Swagger Definition URL: https://superformularestapi20220601225621.azurewebsites.net/swagger/index.html
 
 ```plaintext

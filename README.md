@@ -211,10 +211,10 @@ Example response:
   "vehicleModel": "Corolla",
   "vehicleManufacturer": "Toyota",
   "vehicleName": "My Car",
-  "streetAddress": null,
-  "city": null,
-  "state": null,
-  "zip": null,
+  "streetAddress": 400 W Town St,
+  "city": Houston,
+  "state": TX,
+  "zip": 77321,
   "expirationDate": "2022-11-25T20:54:45.9774821",
   "premium": 80.95
 }

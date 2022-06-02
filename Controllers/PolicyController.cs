@@ -4,18 +4,20 @@ using Microsoft.EntityFrameworkCore;
 using SuperFormulaRestAPI.BusinessLogic;
 using SuperFormulaRestAPI.BusinessLogic.Services;
 using SuperFormulaRestAPI.Data;
+using SuperFormulaRestAPI.Data.Entities;
 using SuperFormulaRestAPI.Helpers;
 using SuperFormulaRestAPI.Models;
-using System.Linq.Expressions;
 
 namespace SuperFormulaRestAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[Controller]")]
     public class PolicyController : ControllerBase
     {
+        private USAddress.AddressParser parser = new USAddress.AddressParser();
         private IPolicyValidator _policyValidator;
         private IEventBusService _eventBusService;
+        
         private readonly DatabaseContext _db;
         private enum SortOrder{
             asc,
@@ -29,23 +31,26 @@ namespace SuperFormulaRestAPI.Controllers
             _eventBusService = new EventBusService();
         }
 
-        [Route("/create")]
+        [Route("create")]
         [HttpPost]
-        public async Task<IActionResult> CreatePolicy([BindRequired] Payload pl)
+        public async Task<IActionResult> CreatePolicyAsync([BindRequired] Payload pl)
         {
-            var trans = _db.Database.BeginTransaction();
             if (ModelState.IsValid)
             {
                 try
                 {
+                    //State Vaidation returns random success or failure flag
                     var stateValidation = _policyValidator.ValidateStateRegulations(pl);
+                    
                     Guid? memId = null;
                     if (stateValidation.IsSuccess)
                     {
-                        bool memberExists = _db.Members.Any(x => x.DriverLicenseNumber.ToLower() == pl.DriverLicenseNumber.ToLower() && x.FirstName.ToLower() == pl.FirstName.ToLower() && x.LastName.ToLower() == pl.LastName.ToLower());
+                        bool memberExists = await _db.Members.Where(x => x.DriverLicenseNumber.ToLower() == pl.DriverLicenseNumber.ToLower() && x.FirstName.ToLower() == pl.FirstName.ToLower() && x.LastName.ToLower() == pl.LastName.ToLower()).AnyAsync();
+                        
+                        //if member does not exists create a new member record 
                         if (!memberExists)
                         {
-                            SuperFormulaRestAPI.Data.Entities.Member member = new SuperFormulaRestAPI.Data.Entities.Member()
+                            Member member = new Member()
                             {
                                 FirstName = pl.FirstName,
                                 LastName = pl.LastName,
@@ -53,11 +58,10 @@ namespace SuperFormulaRestAPI.Controllers
                                 Address = pl.FullAddress
                             };
                             await _db.Members.AddAsync(member);
-                            await _db.SaveChangesAsync();
                             memId = member.MemberId;
                         }
 
-                        SuperFormulaRestAPI.Data.Entities.Policy policy = new SuperFormulaRestAPI.Data.Entities.Policy()
+                        Policy policy = new Policy()
                         {
                             CreateDate = DateTime.Now,
                             EffectiveDate = pl.EffectiveDate,
@@ -68,18 +72,22 @@ namespace SuperFormulaRestAPI.Controllers
                             ExpirationDate = pl.ExpirationDate,
                             Premium = pl.Premium,
                         };
+
+                        //if member exists associate the policy to the member
                         if (memberExists)
                         {
                             Guid existingMemId = _db.Members.Where(x => x.DriverLicenseNumber == pl.DriverLicenseNumber).Select(y => y.MemberId).FirstOrDefault();
                             policy.MemberId = existingMemId;
                         }
+
                         if (memId != null)
                             policy.MemberId = (Guid)memId;
+
                         await _db.Policies.AddAsync(policy);
                         await _db.SaveChangesAsync();
-                        trans.Commit();
+                        //trans.Commit();
 
-                        //Fire and forget send message to event bus
+                        //Fire and forget - send message to event bus
                         _= _eventBusService.SendMessageAsync("This is Event Bus Message to Send", 3);
                         return Ok("Policy Created");
                     }
@@ -90,7 +98,6 @@ namespace SuperFormulaRestAPI.Controllers
                 }
                 catch (Exception ex)
                 {
-                    trans.Rollback();
                     return Problem(ex.Message);
                 }
             }
@@ -98,20 +105,22 @@ namespace SuperFormulaRestAPI.Controllers
                 return BadRequest();
         }
 
-        [Route("/dl/getpolicy/{dlNum}")]
+        [Route("getpolicy/{dlNum}")]
         [HttpGet]
-        public async Task<IActionResult> GetPolicyByDriverLicense([BindRequired] string dlNum, string? sort = null, bool? includeExpired = false )
+        public async Task<IActionResult> GetPolicyByDriverLicenseAsync([BindRequired] string dlNum, string? sort = null, bool? includeExpired = false )
         {
             if (ModelState.IsValid)
             {
                 try
-                {
+                { 
                     bool sortAscending = true;
+                    
                     if (sort != null && (sort.ToLower() == "asc" || sort.ToLower().Contains("asc")))
                         sortAscending = true;
+                    
                     if (sort != null && (sort.ToLower() == "desc" || sort.ToLower().Contains("desc")))
-                        sortAscending = false;
-                    USAddress.AddressParser parser = new USAddress.AddressParser();
+                        sortAscending = false;                  
+                    
                     var result = await (from p in _db.Policies
                                         join m in _db.Members
                                         on p.MemberId equals m.MemberId
@@ -135,12 +144,15 @@ namespace SuperFormulaRestAPI.Controllers
                                             EffectiveDate = p.EffectiveDate,
                                             ExpirationDate = p.ExpirationDate
                                         }).AsQueryable().OrderByPropertyName("VehicleYear",sortAscending).ToListAsync();
-                    bool includeExpiredPolicy = (bool)includeExpired;
-                    if (!includeExpiredPolicy)
-                        result = result.Where(x => x.PolicyExpired == includeExpired).ToList();
                     
-                    if (result != null)
+                    //Filter only policies that haven't expired if includeExpiredPolicy is true
+                    if (!(bool)includeExpired)
+                        result = result.Where(x => x.PolicyExpired == false).ToList();
+                    
+                    //Return OK response if count of list is greater than 0 else return not found 
+                    if (result.Count() > 0)
                         return Ok(result);
+                    
                     return NotFound("Could not find matching driver license");
                 }
                 catch(Exception ex)
@@ -152,15 +164,15 @@ namespace SuperFormulaRestAPI.Controllers
                 return BadRequest();
         }
 
-        [Route("/pl/getpolicy")]
+        [Route("getpolicy")]
         [HttpGet]
-        public async Task<IActionResult> GetPolicyByPolicyId([BindRequired] Guid policyId, [BindRequired] string dlNum)
+        public async Task<IActionResult> GetPolicyByPolicyIdAsync([BindRequired] Guid policyId, [BindRequired] string dlNum)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var dlNumExists = _db.Members.Where(x => x.DriverLicenseNumber == dlNum).Any();
+                    bool dlNumExists = await _db.Members.Where(x => x.DriverLicenseNumber == dlNum).AnyAsync();
                     if (dlNumExists)
                     {
                         var result = await (from p in _db.Policies
@@ -173,7 +185,10 @@ namespace SuperFormulaRestAPI.Controllers
                                                 LastName = m.LastName,
                                                 DriverLicenseNumber = m.DriverLicenseNumber,
                                                 MemberId = m.MemberId,
-                                                FullAddress = m.Address,
+                                                StreetAddress = parser.ParseAddress(m.Address).StreetLine,
+                                                City = parser.ParseAddress(m.Address).City,
+                                                State = parser.ParseAddress(m.Address).State,
+                                                Zip = parser.ParseAddress(m.Address).Zip,
                                                 PolicyNumber = p.PolicyId,
                                                 VehicleManufacturer = p.VehicleManufacturer,
                                                 VehicleModel = p.VehicleModel,

@@ -15,13 +15,12 @@ namespace SuperFormulaRestAPI.BusinessLogic.Services
                 // if success stop delay and exit out, else retry 2 more times
                 if (success)
                 {
-                    Console.WriteLine();
+                    Console.WriteLine($"Success sending Event Bus Message: --{message}--");
                     break;
                 }
                 Console.WriteLine($"Failure sending Event Bus Message: --{message}--");
                 Console.WriteLine($"Retrying........................................Retries Left: {retries - (i + 1)}");
                 success = RandomGenerator.GetRandomNumber(0, 10, 1) <= 5;
-                throw new IndexOutOfRangeException();
             }
             if (!success)
                 Console.WriteLine($"Failure sending Event Bus Message: --{message}--");

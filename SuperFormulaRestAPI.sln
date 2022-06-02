@@ -3,12 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperFormulaRestAPI", "SuperFormulaRestAPI.csproj", "{D2659CE7-E22D-4190-A509-5063E87D463D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFormulaRestAPI", "SuperFormulaRestAPI.csproj", "{D2659CE7-E22D-4190-A509-5063E87D463D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{574BEE01-D39E-4DFE-B50B-FA9968F3BC36}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFormulaRestAPITests", "..\SuperFormulaRestAPIUnitTests\SuperFormulaRestAPITests.csproj", "{9A2215CC-F696-45CF-8DC3-092AF39AC726}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +22,10 @@ Global
 		{D2659CE7-E22D-4190-A509-5063E87D463D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2659CE7-E22D-4190-A509-5063E87D463D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2659CE7-E22D-4190-A509-5063E87D463D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A2215CC-F696-45CF-8DC3-092AF39AC726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A2215CC-F696-45CF-8DC3-092AF39AC726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A2215CC-F696-45CF-8DC3-092AF39AC726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A2215CC-F696-45CF-8DC3-092AF39AC726}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

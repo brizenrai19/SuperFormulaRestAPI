@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFormulaRestAPI", "SuperFormulaRestAPI.csproj", "{DE580236-8B98-4EE6-977C-0480C86B5982}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperFormulaRestAPI.Tests", "..\SuperFormulaRestAPI.Tests\SuperFormulaRestAPI.Tests.csproj", "{929AB0BC-4B6C-47C8-BE81-3869C6C31E1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE580236-8B98-4EE6-977C-0480C86B5982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE580236-8B98-4EE6-977C-0480C86B5982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE580236-8B98-4EE6-977C-0480C86B5982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE580236-8B98-4EE6-977C-0480C86B5982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{929AB0BC-4B6C-47C8-BE81-3869C6C31E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{929AB0BC-4B6C-47C8-BE81-3869C6C31E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{929AB0BC-4B6C-47C8-BE81-3869C6C31E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{929AB0BC-4B6C-47C8-BE81-3869C6C31E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95F71E60-F763-4131-A8F1-55024590E7FD}
+	EndGlobalSection
+EndGlobal

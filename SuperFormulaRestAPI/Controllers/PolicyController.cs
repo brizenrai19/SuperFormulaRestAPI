@@ -85,7 +85,6 @@ namespace SuperFormulaRestAPI.Controllers
 
                         await _db.Policies.AddAsync(policy);
                         await _db.SaveChangesAsync();
-                        //trans.Commit();
 
                         //Fire and forget - send message to event bus
                         _= _eventBusService.SendMessageAsync("This is Event Bus Message to Send", 3);
